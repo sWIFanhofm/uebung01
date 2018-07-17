@@ -4,17 +4,24 @@ class Palindrom {
 	static boolean istPalindrom(String s) {
 		// Verwenden Sie die Klasse CharStackImpl um auf Palindrom zu testen!
 
-        char[] test = s.toCharArray();
+        if(s.length() == 1)
+            return true;
 
-        CharStackImpl ele = new CharStackImpl();
-        for(int i = 0; i < test.length / 2; i++){
-            ele.push(test[i]);
-        }
+        char[] cs = s.toLowerCase().replaceAll(" ", "").toCharArray();
 
-        for(int i = (s.length() + 1) / 2; i < s.length(); i++) {
-            if (test[i] == ele.pop()) {
-                return true;
-            }
-        } return false;
+        CharStack ele = new CharStackImpl();
+        int i = 0;
+        for(; i < cs.length / 2; i++)
+            ele.push(cs[i]);
+
+
+        if(cs.length % 2 == 1)
+            i++;
+
+        for(; i < cs.length; i++) {
+            if (ele.pop() != cs[i])
+                return false;
+
+        } return true;
 	}
 }
