@@ -10,11 +10,13 @@ class Palindrom {
         char[] cs = s.toLowerCase().replaceAll(" ", "").toCharArray();
 
         CharStack ele = new CharStackImpl();
+
+        //Stack aufteilen
         int i = 0;
         for(; i < cs.length / 2; i++)
             ele.push(cs[i]);
 
-
+        //Ungerade Länge ignorieren
         if(cs.length % 2 == 1)
             i++;
 
